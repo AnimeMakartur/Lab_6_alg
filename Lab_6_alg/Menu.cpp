@@ -291,7 +291,6 @@ void customTesting() {
 		}
 		else {
 			for (int i = 0; i < totalInDb; i++) {
-				// ÏÐÀÂÈËÜÍÎ: Âèêîðèñòîâóºìî strcmp äëÿ ïîð³âíÿííÿ âì³ñòó ðÿäê³â
 				if (strcmp(allData[i].subject, subjectNames[subIdx - 1]) == 0) {
 					targetIndices[count++] = i;
 				}
@@ -330,4 +329,8 @@ void customTesting() {
 
 	free(targetIndices);
 	free(allData);
+}
+void exitProgram() {
+	if (database) fclose(database);
+	exit(0);
 }

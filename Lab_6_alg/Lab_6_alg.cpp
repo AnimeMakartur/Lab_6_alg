@@ -36,8 +36,3 @@ int main(int argc, char** argv) {
     }
     return 0;
 }
-
-void exitProgram() {
-    if (database) fclose(database);
-    exit(0);
-}

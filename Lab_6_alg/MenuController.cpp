@@ -32,7 +32,7 @@ int containsIgnoreCase(const char* haystack, const char* needle) {
 	pDest = h;
 	pSrc = (char*)haystack;
 	while (*pSrc) {
-		*pDest++ = (char)tolower((unsigned char)*pSrc++);
+		*pDest++ = tolower(*pSrc++);
 	}
 	*pDest = '\0';
 
@@ -40,7 +40,7 @@ int containsIgnoreCase(const char* haystack, const char* needle) {
 	pDest = n;
 	pSrc = (char*)needle;
 	while (*pSrc) {
-		*pDest++ = (char)tolower((unsigned char)*pSrc++);
+		*pDest++ = tolower(*pSrc++);
 	}
 	*pDest = '\0';
 
@@ -56,12 +56,11 @@ int findAndPrintQuestions(const char* target) {
 	CQ* pAllData = allData;
 	int foundCount = 0;
 	int currentIdx = 1;
-
+	int match = 0;
 	if (database == NULL) return 0;
 	rewind(database);
 	printTableHeader(); // Використовуємо спільний заголовок
 	for (CQ* pTotal = allData+totalInDb; pAllData < pTotal; pAllData++) {
-		int match = 0;
 		if (containsIgnoreCase(pAllData->subject, target)) match = 1;
 		else if (containsIgnoreCase(pAllData->question, target)) match = 1;
 		else {
